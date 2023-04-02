@@ -154,9 +154,7 @@ def main():
     '''
     
     # Get OpenAI API key
-    with open('secrets.toml', 'r') as f:
-        config = toml.load(f)
-    openai.api_key = config['OPENAI_KEY']
+    openai.api_key = st.secrets['OPENAI_KEY']
     
     
     # Convert document sections to embeddings
