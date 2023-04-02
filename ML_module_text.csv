@@ -1,0 +1,72 @@
+Document,Section,Content,Num_Tokens
+Introduction to ML,Intro to Machine Learning,"Prior to machine learning, largely anything that we wanted a machine to do, we needed to provide instructions for the machine to follow so that the machine can perform the task. 
+
+For example, if a person wanted to know, if they exercised to exhaustion, what their estimated maximum heart rate would be. A machine was dumb and would not be able to provide this information unless it was instructed on how to do so. Once a human provided the machine with the relationship between age and maximum heart rate, the machine could then, in turn, provide the person with the requested information. 
+
+In other words, anything that the machine ""knows"" would have needed to be provided by a human. The machine was largely limited by our intelligence.
+
+The issue is that most interesting problems are beyond our ability to instruct a machine to solve. For example, for face recognition, how would you program a computer to differentiate between the face of a given person and every other face? For medical imaging, what rules would you write to tell whether a chest X-ray was normal or of pneumonia?
+
+The good news is that machine learning has provided us with some incredible algorithms that are able to learn to solve problems like these on their own. 
+
+For example, if we give an algorithm several examples of chest X-rays, and provide it with an answer key, known as labels, the algorithm will learn the relationship between the examples and the labels. It will learn which collection of features within an image suggest that it is normal versus indicating pneumonia. Therefore, we can interpret ""machine learning"" as asking machines to learn from examples.
+
+Providing an algorithm with labeled data (i.e., example and label pairs) is known as supervised learning. This is among the most effective forms of machine learning.",352
+Introduction to ML,Machine Learning Algorithms,"Instead of programming a computer, you give a computer examples and it learns what you want
+
+Typically, the more examples (data) that we can provide to a machine learning algorithm, the more effective it will be in learning to solve the given problem. In general, whoever has the most data wins!
+
+An algorithm is like a recipe for solving a problem. It is nothing fancier than a set of steps that we follow in a specific order to get the desired result. There's no need to be concerned with the various ML algorithms at this point. Just know that different algorithms specialize in learning specific tasks. 
+
+For example, some algorithms are best at learning patterns within structured data -- data that is organized in rows and columns as in a spreadsheet. 
+
+Other algorithms are best at learning from unstructured data (e.g., text, images, audio). These algorithms are known as deep learning, and exclusively involve neural networks. We'll discuss neural networks in a separate module.
+
+Keep in mind, your job is not to do machine learning. Your job is to provide an algorithm with examples of your problem, and let the machine learn from those examples.
+
+However, it's important to underscore that although algorithms are a crucial part of machine learning, data is king. Typically, we would prefer more data over a better algorithm, though both are important. This is because machines learn by example and the more examples that we can provide to a machine, the better it will be able to ""learn"" a solution to our problem.",304
+Introduction to ML,Training a Machine Learning Model,"Training a machine learning model means to provide an algorithm with examples so that it can learn a solution. To train a model, we typically don't use all of our data. Commonly, our data would be randomly shuffled and then split into two separate sets -- a training set and a test set. 
+
+We might use a 70/30 or 80/20 split. We would train the model using the largest portion of the data split (e.g., 70%). This is known as the training set. The training set gets the largest portion of the split because we want to train the machine using as many examples as we can while preserving a small portion on which to subsequently evaluate the trained model's performance. An algorithm will iteratively make predictions on each of these training examples, while adjusting its internal parameters to improve performance based upon feedback from the labels (i.e., the answer key). 
+
+Once the model exhibits adequate performance on the training portion of the data, we would then present it with the ""unseen"" test set (the remaining, unused portion of the data). It is the performance on the test set that is the most important indicator of how a model might perform in the ""real world"".",244
+Introduction to ML,The Machine Learning Model,"Once the algorithm has used our examples to learn how to solve the given problem, we call that a trained model. So, the algorithm is not the model. Once an algorithm has learned from the data, we call the result a model. A model holds all the information about the relationship between our examples and the labels. We could say that it now models how a radiologist differentiates between a normal chest X-ray and one indicative of pneumonia.
+
+The final model is what gets deployed (stored on a server or mobile device). An individual would simply need to provide the model with an image of a chest X-ray as input, and then the model will return its prediction as output.",136
+Introduction to ML,Evaluating a Machine Learning Model,"When evaluating the performance of a machine learning model, the metric you choose is important because you will improve what you measure. As the model is training, it will optimize for whichever performance metric you have selected. 
+
+Let's say that we have a dataset of tissue samples from breast cancer patients. We want the model to use tissue morphology to learn to predict the classification of the cancer tissue: benign or malignant.
+
+A common method of illustrating a model's performance is by using a confusion matrix. A confusion matrix displays where the model is confused. 
+
+The matrix has four quadrants indicating whether a given prediction was either true negative, false negative, true positive or **false positive** (as shown below).
+
+•  The true cases are horizontal: In other words, the top two quadrants are truly negative. The bottom two quadrants are truly positive. 
+•  The model's predictions are vertical**: The two left quadrants are what the model predicted to be in the negative class. The two right quadrants are what the model predicted to be in the positive class.
+
+The goal is to have all predictions fall in either the upper left quadrant or the bottom right quadrant. In that case, all of the predictions would be correct.",245
+Introduction to ML,Performance Metrics,"Interpreting the value of the following performance metrics largely depends upon the problem. For example, if you could predict the stock market with 25% accuracy, that would be amazing. Further, how accurate does a Spotify or Netflix recommendation need to be for you to maintain your subscription? It's somewhat subjective. However, for some medical use cases, a model may need to approach 95-99% accuracy to even be useful. Thus, interpreting a performance metric depends upon the use case. 
+
+Accuracy is a measure of how many were correct over the total number of predictions. It is a poor measure when the dataset is imbalanced (e.g., if benign and malignant aren't relatively equally represented in the dataset). Precision or recall would be a better choice in that case since they are focused on performance within the individual classes rather than the whole dataset.
+
+Recall is a measure of the proportion of the positive class that was predicted to be positive. In other words, the proportion of malignant cases that the model predicted to be malignant. This metric is significant when it's a priority to identify each of the positive cases. For example, it would probably be important to identify every malignant case (even if a few of the benign cases were misclassified). Recall would optimize for this. However, for example, it probably wouldn't be important for a dating site to find every person that would be a match for you. Finding just one successful match would probably be enough, so recall would not be important in the case of a dating site. 
+
+Precision is a measure of when the model predicts a sample to be in the positive class, what proportion of the time is the model correct. In other words, the  proportion of cases that the model predicted to be malignant that were actually malignant. Precision can take priority **when you want to avoid false positives**. For example, with a dating site, it's probably important to a user when they are matched with someone that the model is correct often. No one wants to go out on a bunch of bad dates (false positives). Precision would be the metric to prioritize in this case.
+
+Common medical metrics are sensitivity (the same as recall) and <b>specificity</b> (recall for the negative class).",453
+Introduction to ML,Sample Machine Learning Project,"The dataset is of breast cancer morphology. 
+
+With structured data, like that above, we typically put the features (columns) of the dataset into a variable called ""X"", and we put the labels (answer key) into a variable called ""y"" (the target). The arrangement is to provide the machine with ""X"" (the features) so that it can learn to predict ""y"" (the target).
+
+logreg.fit() tells the algorithm to learn from the provided training set. 
+The trained model then uses logreg.score() to evaluate its performance on the ""unseen"" test set. The model returned an accuracy of 94% on the test set. Not bad.
+
+The above precision score indicates that the model was correct 74% of the time when it predicted that a sample was malignant. 
+
+The model's recall score indicates that of all of the samples that were malignant, the model identified 62% of them as malignant. 
+
+Another common metric, shown above, is the f1-score. It is known as the harmonic mean of precision and recall (precision times recall over precision plus recall, times two). It is a balance of precision and recall and enables you to use just one score. 
+
+An additional value to note is the support. It displays the distribution of the two classes within the dataset (i.e., 145 samples were benign and 85 were malignant). Given its imbalance, accuracy may not be the best metric for this dataset.
+
+The confusion matrix is not a performance metric. It simply displays the various performance metrics (i.e., accuracy, precision, recall, f1-score).",327
